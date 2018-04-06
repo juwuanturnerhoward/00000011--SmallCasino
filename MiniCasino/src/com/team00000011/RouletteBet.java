@@ -4,10 +4,6 @@
  */
 public class RouletteBet 
 {
-  private int amount;
-  private int[] values;
-  private int payoutMult;
-  
   public RouletteBet(int am, int[] val)
   {
     this.amount = am;
@@ -47,4 +43,8 @@ public class RouletteBet
     int temp = this.values[value];
     return temp;
   }
+  
+  private int amount;
+  private int[] values;
+  private int payoutMult;
 }
