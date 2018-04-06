@@ -1,4 +1,8 @@
-package test1;
+package com.team00000011.GamePlayers;
+
+import com.team00000011.Die;
+import com.team00000011.Player;
+import com.team00000011.User;
 /**
  *
  * @author kaleb.nelson
