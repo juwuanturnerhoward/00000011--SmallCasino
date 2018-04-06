@@ -2,14 +2,7 @@ package com.team00000011.GamePlayers;
 
 import com.team00000011.Die;
 import com.team00000011.Player;
-// import com.team00000011.User;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import com.team00000011.User;
 /**
  *
  * @author kaleb.nelson
@@ -21,48 +14,45 @@ public class CrapsPlayer extends Player
   * value from the 
   * @param playerBet 
   */
+ 
+  @Override
   public void placeBet(int playerBet)
   {
-    long currencyHolder;
-    
-    //Uses getCurrency to capture the users current currency
-    //currencyHolder = user.getCurrency();
-    currencyHolder = 0;
-    if(currencyHolder < playerBet)
+    if(user.getCurrency() < playerBet)
     {
-      System.out.println("Temp holder for error");
+      System.out.println("You dont have enough money for that much!!!");
     }
     else
     {
-      // user.deductFunds(playerBet);
-      System.out.println("Temp holder no error");
+      user.deductFunds(playerBet);
+      setCurrentBet(playerBet);
     }
+    
   }
   
   /**
    * This function accepts two Die object and uses functions within the objects 
-   * to set and 
+   * to set and print the die values
    * @param one A die to be rolled by the player
    * @param two A die to be rolled by the player
    */
-  void rollDie(Die one, Die two)
+  public void rollDie(Die one, Die two)
   {
-    int rolledOne;
-    int rolledTwo;
-    
     //Rolls die one and sets its value
-    rolledOne = one.roll();
-    one.setValue(rolledOne);
+    one.setValue(one.roll());
     
     //Rolls die two and sets its value
-    rolledTwo = two.roll();
-    two.setValue(rolledTwo);
+    two.setValue(two.roll());
+    
+    //Temp print out
+    System.out.println("You rolled a " + one.getValue() + 
+            "and a " + two.getValue() + "!");
   }
   
   /**
    * @return the currentBet
    */
-  public long getCurrentBet()
+  public int getCurrentBet()
   {
     return currentBet;
   }
@@ -70,10 +60,10 @@ public class CrapsPlayer extends Player
   /**
    * @param currentBet the currentBet to set
    */
-  public void setCurrentBet(long currentBet)
+  private void setCurrentBet(int Bet)
   {
-    this.currentBet = currentBet;
+    this.currentBet = Bet;
   }
   
-  private long currentBet;
+  private int currentBet;
 }
