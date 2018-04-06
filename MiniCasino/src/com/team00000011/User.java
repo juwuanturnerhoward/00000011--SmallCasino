@@ -5,41 +5,41 @@ package com.team00000011;
  */
 public class User
 {
-		private String name;
-		private int experience;
-		private int currency;
+  private String name;
+  private int experience;
+  private int currency;
 		
-    public User(){
-      name = "";
-      experience = currency = 0;
-    }
+  public User(){
+    name = "";
+    experience = currency = 0;
+  }
     
-		public User(String name)
-		{
-      this.name = name;
-      experience = 0;
-      currency = 1000;
-		}
+  public User(String name)
+  {
+    this.name = name;
+    experience = 0;
+    currency = 1000;
+  }
 
-		public String getName()
-		{
-			return name;
-		}
+  public String getName()
+  {
+    return name;
+  }
+	
+  public void setname(String name)
+  {
+    this.name = name;
+  }
     
-		public void setname(String name)
-		{
-			this.name = name;
-		}
+  public int getExperience()
+  {
+    return experience;
+  }
     
-		public int getExperience()
-		{
-			return experience;
-		}
-    
-		public int getCurrency()
-		{
-			return currency;
-		}
+  public int getCurrency()
+  {
+    return currency;
+  }
     
     /* Testing purposes
     public void displayUserInfo()
