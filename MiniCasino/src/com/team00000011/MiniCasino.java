@@ -1,5 +1,8 @@
 package com.team00000011;
-
+/**
+ * 
+ * @author juwuanturner_howard
+ */
 public class MiniCasino
 {
   public MiniCasino() {

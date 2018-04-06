@@ -1,5 +1,8 @@
 package com.team00000011;
-
+/**
+ * 
+ * @author juwuanturner_howard
+ */
 public abstract class Game
 {
   Player gamePlayer = null; 

@@ -10,14 +10,16 @@ import com.team00000011.*;
  *
  * @author juwuanturner_howard
  */
-public class MiniCasinoMain {
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Main Reached.");
-        MiniCasino miniCasino = new MiniCasino();
-        miniCasino.startMiniCasino();
-    }
-    
+
+public class MiniCasinoMain 
+{
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String[] args)
+  {
+    System.out.println("Main Reached.");
+    MiniCasino miniCasino = new MiniCasino();
+    miniCasino.startMiniCasino();
+  }
 }
