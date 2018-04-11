@@ -14,20 +14,23 @@ public class CrapsPlayer extends Player
   * value from the 
   * @param playerBet 
   */
+  
+  /**
+   * 
+   */
+  public CrapsPlayer()
+  {
+    user = User.getUser();
+    currentBet = 0;
+  }
  
   @Override
   public void placeBet(int playerBet)
   {
-    if(user.getCurrency() < playerBet)
-    {
-      System.out.println("You dont have enough money for that much!!!");
-    }
-    else
-    {
-      user.deductFunds(playerBet);
-      setCurrentBet(playerBet);
-    }
-    
+    // Check if the user has funds outside of this with checkFundAvailability in
+    // Craps
+    user.deductFunds(playerBet);
+    setCurrentBet(playerBet);
   }
   
   /**

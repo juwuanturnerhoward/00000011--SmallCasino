@@ -16,6 +16,9 @@ public class Deck
 {
   private ArrayList<Card> deck;
  
+  /**
+   * 
+   */
   public Deck()
   {
     this.deck = new ArrayList<Card>();
@@ -33,16 +36,28 @@ public class Deck
     }
   }
   
+  /**
+   * 
+   * @return 
+   */
   public Card removeCard()
   {
     Card card = deck.remove(0);
     return card;
   }
   
+  /**
+   * 
+   */
   public void shuffle()
   { 
     Collections.shuffle(deck);
   }  
+  
+  /**
+   * 
+   * @return 
+   */
   public ArrayList<Card> getDeck()
   {
     return this.deck;

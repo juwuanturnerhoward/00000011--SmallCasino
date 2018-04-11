@@ -1,12 +1,19 @@
+package com.team00000011;
+
 /**
  *
  * @author luken
  */
 public class RouletteBet 
 {
-  public RouletteBet(int am, int[] val)
+  /**
+   * 
+   * @param amount
+   * @param val 
+   */
+  public RouletteBet(int amount, int[] val)
   {
-    this.amount = am;
+    this.amount = amount;
     this.values = val;
     if (values[0] >= 37 && values[0] <= 40)//checking if even, odd or color bet
     {
@@ -26,18 +33,31 @@ public class RouletteBet
     }
   }
   
+  /**
+   * 
+   * @return 
+   */
   public int getAmount()
   {
     int temp = this.amount;
     return temp;
   }
   
+  /**
+   * 
+   * @return 
+   */
   public int getPayoutMult()
   {
     int temp = this.payoutMult;
     return temp;
   }
   
+  /**
+   * 
+   * @param value
+   * @return 
+   */
   public int getValue(int value)
   {
     int temp = this.values[value];

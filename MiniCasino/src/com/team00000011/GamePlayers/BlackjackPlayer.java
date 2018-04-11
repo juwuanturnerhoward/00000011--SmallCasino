@@ -9,16 +9,17 @@ import com.team00000011.Deck;
 import com.team00000011.Hand;
 import com.team00000011.Player;
 import com.team00000011.GamePlayers.Dealer;
+import com.team00000011.*;
 /**
  *
  * @author
  */
-public abstract class BlackjackPlayer extends Player 
+public class BlackjackPlayer extends Player 
 {
-
   
   public BlackjackPlayer()
   {
+    user = User.getUser();
 		this.hand = new Hand();
     bet = 0;
   }  
@@ -32,4 +33,10 @@ public abstract class BlackjackPlayer extends Player
 
   private Hand hand;
   private int bet;
+
+  @Override
+  public void placeBet(int amountOfBet) {
+    throw new UnsupportedOperationException("Not supported yet.");
+    //To change body of generated methods, choose Tools | Templates.
+  }
 }

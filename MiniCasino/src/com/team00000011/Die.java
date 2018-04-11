@@ -54,5 +54,6 @@ public class Die
   {
     this.value = value;
   }
+  
   private int value;
 }

@@ -5,6 +5,7 @@
  */
 package com.team00000011.minicasino;
 import com.team00000011.*;
+import com.team00000011.GamePlayers.*;
 
 /**
  *
@@ -18,7 +19,6 @@ public class MiniCasinoMain
    */
   public static void main(String[] args)
   {
-    System.out.println("Main Reached.");
     MiniCasino miniCasino = new MiniCasino();
     miniCasino.startMiniCasino();
   }

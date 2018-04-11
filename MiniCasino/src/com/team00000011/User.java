@@ -5,15 +5,45 @@ package com.team00000011;
  */
 public class User
 {
+  static User user;
+  static boolean userMade = false;
+
   private String name;
   private int experience;
   private int currency;
-		
+	/**
+   * 
+   * @return a
+   */
+  static final public User getUser()
+  {
+    if(userMade == false)
+    {
+      System.out.println("User Made");
+      userMade = true;
+      return new User();
+    }
+    else
+    {
+      System.out.println("User returned");
+      return user;
+    }
+  }
+  
+  
+  /**
+   * 
+   */
   public User(){
     name = "";
     experience = currency = 0;
   }
-    
+  
+
+/**
+ * 
+ * @param name 
+ */  
   public User(String name)
   {
     this.name = name;
@@ -21,44 +51,71 @@ public class User
     currency = 1000;
   }
 
+  
+  /**
+   * 
+   * @return 
+   */
   public String getName()
   {
     return name;
   }
 	
+  
+  /**
+   * 
+   * @param name 
+   */
   public void setname(String name)
   {
     this.name = name;
   }
     
+  
+  /**
+   * 
+   * @return 
+   */
   public int getExperience()
   {
     return experience;
   }
     
+  
+  /**
+   * 
+   * @return 
+   */
   public int getCurrency()
   {
     return currency;
   }
-    
-  /* Testing purposes
-  public void displayUserInfo()
-	{
-    System.out.println("Name: " + name);
-    System.out.println("Experience: " + experience);
-    System.out.println("Currency: " + currency);
-  }*/
-    
+   
+  
+  /**
+   * 
+   * @param amount 
+   */
   public void addFunds(int amount)
   {
     currency += amount;
   }
   
+  
+  /**
+   * 
+   * @param amount 
+   */
   public void deductFunds(int amount)
   {
     currency -= amount;
   }
     
+  
+  /**
+   * 
+   * @param amount 
+   */
   public void addExperience(int amount)
   {
     experience += amount; 

@@ -7,20 +7,13 @@ import com.team00000011.GamePlayers.CrapsPlayer;
  *
  * @author kaleb.nelson
  */
-public class Craps implements Game
+public class Craps extends Game
 {
   @Override
   public void play()
   {
     System.out.println("Welcome to Craps! The simple dice rolling game!");
-    System.out.println("Please press R to roll the die!");
-    
-    
-  }
-  @Override
-  public boolean checkFundAvailability() 
-  {
-    return false;
+    System.out.println("Please press R to roll the die!"); 
   }
   
   @Override
@@ -31,7 +24,6 @@ public class Craps implements Game
     if(this.currentDiceSum == 7 || this.currentDiceSum== 11)
     {
       System.out.println("Congrats! You won your bet!");
-      
       return true;
     }
     else if(this.currentDiceSum == 2 || this.currentDiceSum == 3 || 
@@ -39,7 +31,6 @@ public class Craps implements Game
     {
       System.out.println("Sorry! You rolled a " + this.currentDiceSum + 
               "! You lost your bet");
-      
       return true;
     }
     else
@@ -72,13 +63,13 @@ public class Craps implements Game
               "! You lost your bet");
       return true;
     }
-    
     else
     {
       System.out.println("You haven't hit your target value yet! Roll again!");
       return false;
     }
   }
+  
   /**
    * This function serves to check if currentDiceSum and targetDiceValue are 
    * are equal to one another within checkNextRoll()
@@ -97,6 +88,7 @@ public class Craps implements Game
       return false;
     }
   }
+  
   /**
    * This function serves to add together the two values of the die objects
    * to give an integer for use in later functions.
@@ -112,7 +104,6 @@ public class Craps implements Game
     this.currentDiceSum = dieSum;
   }
   
-  //Variables for use in class
   private int currentBet;
   private Die[] Dice = new Die[2];
   private CrapsPlayer gamePlayer = new CrapsPlayer();

@@ -56,6 +56,7 @@ public class Hand
     }
     return handValue;
   }
+  
   private int handLimit;           //limit of how many cards in the hand
   private int cardsInHand;        // Counts how many cards are in hand
   public int totalHandValue;      // Total value of all cards in player hand
