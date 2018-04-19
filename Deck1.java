@@ -29,22 +29,6 @@ public class Deck1 {
         deck.add(new Card1(fv, s));
       }
     }
-    showDeck();
-    /* 
-    for (int i = 0; i < deck.size(); i++)
-    {
-      System.out.println(deck.get(i).getCardValue());
-    } */
-  }
-  
-  public void showDeck()
-  {
-    System.out.println("Size of deck: " + Integer.toString(deck.size()));
-    for(int i = 0; i < deck.size(); i++)
-    {
-      System.out.print("Card Value" + deck.get(i).getCardValue() + " Suit");
-      System.out.println(deck.get(i).getFaceValue());
-    }
   }
 
   public Card1 removeCard() {

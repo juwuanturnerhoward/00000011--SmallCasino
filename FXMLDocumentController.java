@@ -51,7 +51,6 @@ public class FXMLDocumentController implements Initializable {
   private static int posCounter = 0;
   private static int bet = 0;
   private static int Account = 1000;
-  private static int amtAsAccounted = 0;
   @FXML
   private Button mainMenu;
   @FXML
@@ -375,11 +374,13 @@ public class FXMLDocumentController implements Initializable {
   private void hit(ActionEvent event) {
     posCounter += 1;
     Card1 hitCard = handTest.hit();
+    handTotal = handTest.updateHandTotal(hitCard, handTotal);
     String unicodeCardImage = null;
-    handTotal += hitCard.getCardValue();
+    //handTotal += hitCard.getCardValue();
     switch (hitCard.getFaceValue()) {
       case "ACE":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD1";
             break;
@@ -396,7 +397,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "TWO":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD2";
             break;
@@ -413,7 +415,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "THREE":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD3";
             break;
@@ -430,7 +433,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "FOUR":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit())
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD4";
             break;
@@ -447,7 +451,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "FIVE":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit())
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD5";
             break;
@@ -464,7 +469,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "SIX":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD6";
             break;
@@ -481,7 +487,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "SEVEN":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD7";
             break;
@@ -498,7 +505,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "EIGHT":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD8";
             break;
@@ -515,7 +523,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "NINE":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCD9"; // Club
             break;
@@ -532,7 +541,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "TEN":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCDA"; // Club
             break;
@@ -549,7 +559,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "JACK":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCDB"; // Club
             break;
@@ -566,7 +577,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "QUEEN":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCDD"; // Club
             break;
@@ -583,7 +595,8 @@ public class FXMLDocumentController implements Initializable {
         break;
 
       case "KING":
-        switch (hitCard.getSuit()) {
+        switch (hitCard.getSuit()) 
+        {
           case CLUB:
             unicodeCardImage = "\uD83C\uDCDE"; // Club
             break;
@@ -599,7 +612,8 @@ public class FXMLDocumentController implements Initializable {
         }
         break;
     }
-    switch (posCounter) {
+    switch (posCounter) 
+    {
       //case 1: firstCard.setText(unicodeCardImage); break;
       //case 2: secondCard.setText(unicodeCardImage); break;
       case 1:
@@ -612,20 +626,11 @@ public class FXMLDocumentController implements Initializable {
         fifthCard.setText(unicodeCardImage);
         break;
     }
-    //handTest.value();
+   
     
-    if (handTotal > 21) {
-      int amtOfAces = 0;
-         for(Card1 c : handTest.getHand()) {
-        if(c.getFaceValue().equals("ACE")) {
-          amtOfAces += 1;
-        }
-      }
-         if(amtOfAces > amtAsAccounted) {
-           handTotal -= 10;
-           amtAsAccounted += 1;
-           System.out.println("In here fam");
-         }
+    // handTotal = handTest.value();
+    if (handTotal > 21) 
+    {
       action.setText("BUSTED!");
       bankAccount.setText("Bank Account: " + (Integer.toString(Account)));
       handValue.setText(Integer.toString(handTotal));
@@ -674,24 +679,28 @@ public class FXMLDocumentController implements Initializable {
     dealerFifthCard.setText(null);
     Account -= bet;
     bankAccount.setText("Bank Account: " + (Integer.toString(Account)));
-
+    
     for (int i = 0; i < 4; i++) {
       Card1 hitCard = handTest.hit();
+      Integer hitCardValue;
+
       String cardImg = hitCard.getHexaImage();
       switch (i) {
         case 0: {
           firstCard.setText(cardImg);
-          playerInitialValue += hitCard.getCardValue();
+          playerInitialValue = handTest.updateHandTotal(hitCard, playerInitialValue);
+
           break;
         }
         case 1: {
           secondCard.setText(cardImg);
-          playerInitialValue += hitCard.getCardValue();
+          playerInitialValue = handTest.updateHandTotal(hitCard, playerInitialValue);
           break;
         }
         case 2: {
           dealerFirstCard.setText(cardImg);
-          dealerInitialValue += hitCard.getCardValue();
+          dealerInitialValue = handTest.updateHandTotal(hitCard, dealerInitialValue);
+
           break;
         }
         case 3: {

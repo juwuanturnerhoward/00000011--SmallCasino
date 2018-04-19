@@ -23,10 +23,14 @@ public class Hand1
 
   private ArrayList<Card1> cards = new ArrayList<Card1>();
   private Deck1 deck;
+  static int aceCount;
+
 
   public Hand1(Deck1 deck) 
   {
+    
     this.deck = deck;
+    aceCount = 0;
 
     // Deal two cards to initialize the hand:
     cards.addAll(deck.drawCards(2));
@@ -34,23 +38,26 @@ public class Hand1
   }
 
   /**
-   * Calculates the value of the hand. Picture cards are worth 10 and an Ace is
-   * worth 1 or 11. 152:
+   * Calculates the value of the hand. Face cards are worth 10 and an Ace is
+   * worth 1 or 11.
    */
   public int value() 
   {
     int total = 0;
     boolean hasAce = false;
+    System.out.println("In value");
     for (Card1 card : cards) 
     {
+      System.out.println("Card Address: " + card);
       int val = card.getCardValue();
       if (val == 1) {
         hasAce = true;
       }
       total += val;
     }
+    System.out.println("Outside of loop");
 
-    while (total < (21 - 10) && hasAce) 
+    while (total < 11 && hasAce) 
     {
       total += 10;
     }
@@ -87,7 +94,24 @@ public class Hand1
 public ArrayList<Card1> getHand() {
   return this.cards;
 }
+public int updateHandTotal(Card1 hitCard, int handTotal)
+{
+  System.out.println("Inside of the aceCount stuff");
 
+  handTotal += hitCard.getCardValue();
+  if (hitCard.getFaceValue().equals("ACE")) 
+  {
+    aceCount++;
+  }
+  
+  if(aceCount > 0 && handTotal > 21) 
+  {
+    System.out.println("Inside of the aceCount stuff hand Total");
+    handTotal -= 10;
+    aceCount--;
+  }
+  return handTotal;
+}
 }
 
 
