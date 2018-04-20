@@ -25,6 +25,13 @@ public class Craps extends Game
   @Override
   public void returnHome() {}
   
+  public Craps()
+  {
+    for(int i = 0; i < 2; i++)
+    {
+      Dice[i] = new Die();
+    }
+  }
   /**
    * Checks the first roll of the game; Uses a tracker variable inside the game
    * logic to check if needed
