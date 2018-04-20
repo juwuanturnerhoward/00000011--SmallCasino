@@ -48,14 +48,14 @@ public class Hand1
     System.out.println("In value");
     for (Card1 card : cards) 
     {
-      System.out.println("Card Address: " + card);
+     // System.out.println("Card Address: " + card);
       int val = card.getCardValue();
       if (val == 1) {
         hasAce = true;
       }
       total += val;
     }
-    System.out.println("Outside of loop");
+    //System.out.println("Outside of loop");
 
     while (total < 11 && hasAce) 
     {
@@ -96,7 +96,7 @@ public ArrayList<Card1> getHand() {
 }
 public int updateHandTotal(Card1 hitCard, int handTotal)
 {
-  System.out.println("Inside of the aceCount stuff");
+  //System.out.println("Inside of the aceCount stuff");
 
   handTotal += hitCard.getCardValue();
   if (hitCard.getFaceValue().equals("ACE")) 
@@ -106,7 +106,7 @@ public int updateHandTotal(Card1 hitCard, int handTotal)
   
   if(aceCount > 0 && handTotal > 21) 
   {
-    System.out.println("Inside of the aceCount stuff hand Total");
+    //System.out.println("Inside of the aceCount stuff hand Total");
     handTotal -= 10;
     aceCount--;
   }

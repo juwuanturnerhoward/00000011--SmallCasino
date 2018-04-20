@@ -8,10 +8,10 @@ package blackjackgui;
 public class Card1 {
 
   public static enum faceValue {
-    ACE(1, "ACE"), TWO(2, "TWO"), THREE(3, "THREE"), FOUR(4, "FOUR"),
+    TWO(2, "TWO"), THREE(3, "THREE"), FOUR(4, "FOUR"),
     FIVE(5, "FIVE"), SIX(6, "SIX"), SEVEN(7, "SEVEN"), EIGHT(8, "EIGHT"),
     NINE(9, "NINE"), TEN(10, "TEN"), JACK(10, "JACK"), QUEEN(10, "QUEEN"),
-    KING(10, "KING");
+    KING(10, "KING"), ACE(11, "ACE");
 
     public int cardValue;
     public String faceValue;
@@ -71,7 +71,6 @@ public class Card1 {
 
 // Replace strings below with actual enum type
     switch (this.getFaceValue()) {
-      case "ACE":
       case "TWO":
       case "THREE":
       case "FOUR":
@@ -93,6 +92,9 @@ public class Card1 {
         break;
       case "KING":
         hexa += "E";
+        break;
+      case "ACE":
+        hexa += "1";
         break;
       default:
         hexa += "1";
