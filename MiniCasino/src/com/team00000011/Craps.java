@@ -1,12 +1,14 @@
-package test1;
+package com.team00000011;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import com.team00000011.GamePlayers.CrapsPlayer;
 
 /**
  *
@@ -14,17 +16,17 @@ import javafx.stage.Stage;
  */
 public class Craps extends Game
 {
-  
+   
   
   @Override
-  public void play()
-  {
-    
-  }
+  public void play(){}
   
   @Override
   public void returnHome() {}
   
+  /**
+   * Constructor for the Craps class. Initalizes the Dice array.
+   */
   public Craps()
   {
     for(int i = 0; i < 2; i++)
@@ -32,6 +34,7 @@ public class Craps extends Game
       Dice[i] = new Die();
     }
   }
+  
   /**
    * Checks the first roll of the game; Uses a tracker variable inside the game
    * logic to check if needed
@@ -147,37 +150,50 @@ public class Craps extends Game
   
   /**
    * This function will create a popup window with the text of input in the
-   * window
+   * window. Pressing enter will close this window.
    * @param input a string to be printed in the popup window
    */
   private void popupWindow(String input)
   {
+    //Create a stage to work with
     Stage popup = new Stage();
       
+    //Pauses the rest of the GUU
       popup.initModality(Modality.APPLICATION_MODAL);
       
+      //Takes the input and displays it to the screen
       Label message = new Label(input);
      
-      Button close = new Button("Close");
-      close.setOnAction(e->popup.close());
+      //Creates a lambda to close the popup when enter is pressed
+      Label closeMessage = new Label("Hit enter to close this window");
+      popup.addEventHandler(KeyEvent.KEY_PRESSED,(KeyEvent event) -> {
+        if (KeyCode.ENTER == event.getCode()){
+          popup.close();
+        }
+      });
       
+      //Create a Vertical Box to place object
       VBox layout= new VBox(10);
-     
       
-      layout.getChildren().addAll(message, close);
+      //Add the labels to the program
+      layout.getChildren().addAll(message, closeMessage);
       
+      //Centers the messages
       layout.setAlignment(Pos.CENTER);
       
-      Scene scene1= new Scene(layout, 300, 250);
+      //Creates a scene object to show the window
+      Scene scene1= new Scene(layout, 400, 350);
       
+      //Sets the scene
       popup.setScene(scene1);
       
+      //Shows it to the user.
       popup.showAndWait();
   }
   
-  //Variables for use in class
-  public Die[] Dice = new Die[2];
-  public CrapsPlayer gamePlayer = new CrapsPlayer("Johnny");
-  public int targetDiceValue;
+  private int currentBet;
+  Die[] Dice = new Die[2];
+  CrapsPlayer gamePlayer = new CrapsPlayer();
+  int targetDiceValue;
   private int currentDiceSum;
 }
