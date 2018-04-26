@@ -1,12 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package minicasino1;
-
-public class Card1 {
-
+/**
+ * 
+ * @author Bradley Cain
+ */
+public class Card {
+  /**
+   * creates an enumerated data type to portray 13 different cards with their
+   * card value and face value.
+   */
   public static enum faceValue {
     TWO(2, "TWO"), THREE(3, "THREE"), FOUR(4, "FOUR"),
     FIVE(5, "FIVE"), SIX(6, "SIX"), SEVEN(7, "SEVEN"), EIGHT(8, "EIGHT"),
@@ -20,37 +22,61 @@ public class Card1 {
       this.cardValue = cardValue;
       this.faceValue = faceValue;
     }
-
+    /**
+     * gets the card value of the card
+     * @return 
+     */
     public int getCardValue() {
       return this.cardValue;
     }
-
+    /**
+     * gets the face value of the card
+     * @return 
+     */
     public String getFaceValue() {
       return this.faceValue;
     }
   }
-
+  /**
+   * creates an enumerated data type to portray each of the 4 suits.
+   */
   public enum suit {
     HEART, DIAMOND, SPADE, CLUB
   }
-
-  public Card1(faceValue card, suit cardSuit) {
+  /**
+   * initializes card
+   * @param card
+   * @param cardSuit 
+   */
+  public Card(faceValue card, suit cardSuit) {
     this.card = card;
     this.cardSuit = cardSuit;
   }
-
+  /**
+   * gets the suit of the card
+   * @return 
+   */
   public suit getSuit() {
     return this.cardSuit;
   }
-
+  /**
+   * gets the card value 
+   * @return 
+   */
   public int getCardValue() {
     return this.card.getCardValue();
   }
-
+  /**
+   * get the face value of the card
+   * @return 
+   */
   public String getFaceValue() {
     return this.card.getFaceValue();
   }
-
+  /**
+   * gets the hexadecimal value of each card for the GUI
+   * @return a hexadecimal string
+   */
   public String getHexaImage() {
     String hexa = "0xDC";
     switch (this.getSuit()) {
@@ -97,7 +123,6 @@ public class Card1 {
       default:
         hexa += "1";
     }
-    System.out.println("HEXA: " + hexa);
     int number = Integer.decode(hexa);
     return "\uD83C" + (char) number;
   }

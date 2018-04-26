@@ -17,11 +17,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import static minicasino1.MiniCasino1_1.user;
+import static minicasino1.MiniCasino.user;
 
 /**
- *
- * @author juwuanturner_howard
+ * Implements the graphical user interface for the user to play
+ * the game of blackjack.
+ * @author juwuanturner_howard, Bradley Cain
  */
 public class BlackJackGUI implements Initializable {
 
@@ -76,9 +77,9 @@ public class BlackJackGUI implements Initializable {
   @FXML
   private Label betAmount;
 
-  private static Deck1 deck = new Deck1();
-  private Hand1 handTest;
-  private Hand1 dealerHandTest;
+  private static Deck deck = new Deck();
+  private Hand handTest;
+  private Hand dealerHandTest;
   private static int handTotal = 0;
   private static int playerInitialValue = 0;
   private static int dealerHandTotal = 0;
@@ -87,13 +88,17 @@ public class BlackJackGUI implements Initializable {
   private static int bet = 0;
   private static int Account = user.getCurrency();
 
-  //start of BlackJack 
+  /**
+   * implements when user clicks the Stay button on the GUI.
+   * Handles the operations for dealers hand.
+   * @param event 
+   */ 
   @FXML
   private void stay(ActionEvent event) {
     dealerHandTotal = dealerInitialValue;
     posCounter = 1;
     while (dealerHandTotal <= 16 && handTotal <= 21) {
-      Card1 hitCard = dealerHandTest.hit();
+      Card hitCard = dealerHandTest.hit();
       dealerHandTotal += hitCard.getCardValue();
       String cardImg = hitCard.getHexaImage();
       switch (posCounter) {
@@ -143,7 +148,11 @@ public class BlackJackGUI implements Initializable {
       bankAccount.setText("Bank Account: " + (Integer.toString(Account)));
     }
   }
-
+  /**
+   * implements the hit function for the user to play his hand.
+   * Displays the cards to the screen so the user can see his hand.
+   * @param event 
+   */
   @FXML
   private void hit(ActionEvent event) {
     if (handTest == null && dealerHandTest == null) {
@@ -151,7 +160,7 @@ public class BlackJackGUI implements Initializable {
     }
 
     posCounter += 1;
-    Card1 hitCard = handTest.hit();
+    Card hitCard = handTest.hit();
     handTotal = handTest.updateHandTotal(hitCard, handTotal);
     String unicodeCardImage = null;
     //handTotal += hitCard.getCardValue();
@@ -176,7 +185,11 @@ public class BlackJackGUI implements Initializable {
     }
     handValue.setText(Integer.toString(handTotal));
   }
-
+  /**
+   * Changes the scene from Blackjack to Main menu
+   * @param event
+   * @throws IOException 
+   */
   @FXML
   private void BJtoMM(ActionEvent event) throws IOException {
     Stage stage;
@@ -188,11 +201,15 @@ public class BlackJackGUI implements Initializable {
     stage.show();
     stage.setMaximized(true);
   }
-
+  /**
+   * Starts the game and initializes the user's and dealer's hand.
+   * Every time the user clicks deal it resets each hand and the deck.
+   * @param event 
+   */
   @FXML
   private void deal(ActionEvent event) {
-    handTest = new Hand1(deck);
-    dealerHandTest = new Hand1(deck);
+    handTest = new Hand(deck);
+    dealerHandTest = new Hand(deck);
     handTotal = 0;
     dealerHandTotal = 0;
     posCounter = 0;
@@ -214,7 +231,7 @@ public class BlackJackGUI implements Initializable {
     bankAccount.setText("Bank Account: " + (Integer.toString(Account)));
 
     for (int i = 0; i < 4; i++) {
-      Card1 hitCard = handTest.hit();
+      Card hitCard = handTest.hit();
 
       String cardImg = hitCard.getHexaImage();
       switch (i) {
@@ -254,29 +271,41 @@ public class BlackJackGUI implements Initializable {
     dealerValue.setText(Integer.toString(dealerInitialValue));
     handValue.setText(Integer.toString(playerInitialValue));
   }
-
+  /**
+   * button for the user to decide what to bet before the deal.
+   * @param event 
+   */
   @FXML
   private void betOption3(ActionEvent event) {
     bet = 100;
     betAmount.setText("Bet Amount = 100");
   }
-
+  /**
+   * button for the user to decide what to bet before the deal.
+   * @param event 
+   */
   @FXML
   private void betOption2(ActionEvent event) {
     bet = 50;
     betAmount.setText("Bet Amount = 50");
   }
-
+  /**
+   * button for the user to decide what to bet before the deal.
+   * @param event 
+   */
   @FXML
   private void betOption1(ActionEvent event) {
     bet = 25;
     betAmount.setText("Bet Amount = 25");
   }
   //End of BlackJack
-
+  /**
+   * initializes GUI objects in blackjack GUI
+   * @param location
+   * @param resources 
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    System.out.println("Blackjack Init");
     bankAccount.setText("Bank Account: " + Integer.toString(user.getCurrency()));
   }
 }

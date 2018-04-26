@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import minicasino1.User;
 import javafx.event.ActionEvent;
 
-public class MiniCasino1_1 extends Application 
+public class MiniCasino extends Application 
 {
     
   @Override

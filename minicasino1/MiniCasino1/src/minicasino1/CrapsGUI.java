@@ -269,7 +269,7 @@ public class CrapsGUI {
   }
 
   /**
-   * This function will create a popup window with the text of input in the
+   * Create a popup window with the text of input in the
    * window
    *
    * @param input a string to be printed in the popup window

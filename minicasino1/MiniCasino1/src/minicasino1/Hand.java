@@ -1,20 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package minicasino1;
 
+/**
+ * Holds an array list of cards to portray a user's hand.
+ * Keeps track of the amount of ace's on user's 
+ * @author Bradley Cain
+ */
 import java.util.*;
-import minicasino1.Card1;
+import minicasino1.Card;
 
-public class Hand1 {
+public class Hand {
 
-  private ArrayList<Card1> cards = new ArrayList<Card1>();
-  private Deck1 deck;
+  private ArrayList<Card> cards = new ArrayList<Card>();
+  private Deck deck;
   private int aceCount;
-
-  public Hand1(Deck1 deck) {
+  /**
+   * constructor for Hand
+   * @param deck 
+   */
+  public Hand(Deck deck) {
     this.deck = deck;
     aceCount = 0;
   }
@@ -27,7 +30,7 @@ public class Hand1 {
     int total = 0;
     boolean hasAce = false;
     System.out.println("In value");
-    for (Card1 card : cards) {
+    for (Card card : cards) {
       int val = card.getCardValue();
       if (val == 1) {
         hasAce = true;
@@ -44,29 +47,31 @@ public class Hand1 {
   /**
    * Add one card to the hand from the shoe.
    */
-  public Card1 hit() {
+  public Card hit() {
     return deck.drawCards(1).get(0);
-  }
-
-  public void updateHand() {
-    aceCount = 0;
-
   }
 
   /**
    * During the play only the first card of the dealers hand should be shown.
-   *
-   * @return
+   * @return card
    */
-  public Card1 firstCard() {
+  public Card firstCard() {
     return cards.get(0);
   }
-
-  public ArrayList<Card1> getHand() {
+  /**
+   * gets an instance of Hand
+   * @return an array list of cards
+   */
+  public ArrayList<Card> getHand() {
     return this.cards;
   }
-
-  public int updateHandTotal(Card1 hitCard, int handTotal) {
+  /**
+   * updates hand total to keep track of hand total for user to see
+   * @param hitCard
+   * @param handTotal
+   * @return 
+   */
+  public int updateHandTotal(Card hitCard, int handTotal) {
     handTotal += hitCard.getCardValue();
     if (hitCard.getFaceValue().equals("ACE")) {
       aceCount++;

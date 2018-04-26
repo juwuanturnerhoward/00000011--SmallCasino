@@ -18,7 +18,7 @@ public class CrapsPlayer extends Player
    */
   public CrapsPlayer()
   {
-    user = MiniCasino1_1.user;
+    user = MiniCasino.user;
     currentBet = 0;
   }
  

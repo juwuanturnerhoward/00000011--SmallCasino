@@ -22,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author juwuanturner_howard
  */
-public class UserGUI implements Initializable {
+public class UserGUI1 implements Initializable {
 
   @FXML
   private Button mainMenuButton;
@@ -33,16 +33,13 @@ public class UserGUI implements Initializable {
   @FXML
   public Label currency = new Label();
 
-  @FXML
-  public Label experience = new Label();
-
+  
   @FXML
   private void mainMenuSwitch(ActionEvent event) throws IOException //this to switch
   {
     username.setText("Made by the guys...");
     currency.setText("... and Debug Master Rachel");
 
-    experience.setText(Integer.toString(User.getUser().getExperience()));
     Stage stage;
     Parent root;
     stage = (Stage) mainMenuButton.getScene().getWindow();
@@ -52,12 +49,11 @@ public class UserGUI implements Initializable {
     stage.show();
     stage.setMaximized(true);
   }
-
+  
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     username.setText(User.getUser().getName());
     currency.setText(Integer.toString(User.getUser().getCurrency()));
-    experience.setText(Integer.toString(User.getUser().getExperience()));
   }
 
 }
