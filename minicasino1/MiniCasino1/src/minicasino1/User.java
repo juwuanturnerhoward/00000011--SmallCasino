@@ -1,8 +1,5 @@
-package com.team00000011;
-/**
- *
- * @author juwuanturner_howard
- */
+package minicasino1;
+
 public class User
 {
   static User user;
@@ -15,6 +12,22 @@ public class User
    * 
    * @return a
    */
+  static final public User getUser(String name)
+  {
+    if(userMade == false)
+    {
+      System.out.println("User Made");
+      userMade = true;
+      user = new User(name);
+      return user;
+    }
+    else
+    {
+      System.out.println("User returned");
+      return user;
+    }
+  }
+  
   static final public User getUser()
   {
     if(userMade == false)
@@ -30,11 +43,10 @@ public class User
     }
   }
   
-  
   /**
    * 
    */
-  public User(){
+  public User() {
     name = "";
     experience = currency = 0;
   }
@@ -48,7 +60,7 @@ public class User
   {
     this.name = name;
     experience = 0;
-    currency = 1000;
+    currency = 10000;
   }
 
   

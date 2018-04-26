@@ -1,12 +1,10 @@
-package com.team00000011.GamePlayers;
-
-import com.team00000011.Die;
-import com.team00000011.Player;
-import com.team00000011.User;
-/**
- *
- * @author kaleb.nelson
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
+package minicasino1;
+
 public class CrapsPlayer extends Player
 {
  /**
@@ -20,7 +18,7 @@ public class CrapsPlayer extends Player
    */
   public CrapsPlayer()
   {
-    user = User.getUser();
+    user = MiniCasino1_1.user;
     currentBet = 0;
   }
  
