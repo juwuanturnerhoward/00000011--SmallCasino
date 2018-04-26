@@ -1,30 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package minicasino1;
+package com.team00000011;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import com.team00000011.GamePlayers.CrapsPlayer;
+/**
+ *
+ * @author kaleb.nelson
+ */
 public class Craps extends Game
 {
-  @Override
-  public void play()
-  { 
-  }
+  
   
   @Override
-  public void returnHome() 
-  {
-  }
-    
+  public void play(){}
+  
+  @Override
+  public void returnHome() {}
+  
+  /**
+   * Constructor for the Craps class.
+   */
   public Craps()
   {
     for(int i = 0; i < 2; i++)
@@ -32,6 +33,7 @@ public class Craps extends Game
       Dice[i] = new Die();
     }
   }
+  
   /**
    * Checks the first roll of the game; Uses a tracker variable inside the game
    * logic to check if needed
@@ -45,32 +47,21 @@ public class Craps extends Game
     //Checks if the user rolled 7 or 11, which is a win
     if(this.currentDiceSum == 7 || this.currentDiceSum== 11)
     {
-      popupWindow("Congrats! You rolled a " + 
-              Integer.toString(this.currentDiceSum) +"! You won" +
-              Integer.toString(gamePlayer.getCurrentBet() * 2) +" dollars!");
       gamePlayer.user.addFunds(gamePlayer.getCurrentBet() * 2);
-      gamePlayer.placeBet(0);
-      Dice[0].setValue(0);
-      Dice[1].setValue(0);
       this.targetDiceValue = 0;
+      gamePlayer.user.addExperience(11);
     }
     
     //Checks if the user rolled a 2,3 or 12, which is an automatic loss
     else if(this.currentDiceSum == 2 || this.currentDiceSum == 3 || 
             this.currentDiceSum == 12)
     {
-      popupWindow("Sorry! You rolled a " + 
-              Integer.toString(this.currentDiceSum) + "! You lost your bet...");
-      gamePlayer.placeBet(0);
-      Dice[0].setValue(0);
-      Dice[1].setValue(0);
       this.targetDiceValue = 0;
     }
     
     //Continues informs user to roll again
     else
     {
-      popupWindow("You haven't won yet! Roll again for another chance to win!");
       this.targetDiceValue = this.currentDiceSum;
     }
   }
@@ -85,32 +76,14 @@ public class Craps extends Game
     
     if(compareDiceValues() == true)
     {
-    
-      popupWindow("Congrats! You hit the target dice value!"
-              + "You won " + Integer.toString(gamePlayer.getCurrentBet() * 2) + 
-              "dollars!");
-      
       gamePlayer.user.addFunds(gamePlayer.getCurrentBet() * 2);
-      gamePlayer.placeBet(0);
-      Dice[0].setValue(0);
-      Dice[1].setValue(0);
       this.targetDiceValue = 0;
     }
     else if (this.currentDiceSum == 2 || this.currentDiceSum == 3 || 
             this.currentDiceSum == 7 || this.currentDiceSum == 12)
     {
-      popupWindow("Sorry! You rolled a " + Integer.toString(this.currentDiceSum)
-              + "! You lost your bet");
-      gamePlayer.placeBet(0);
-      Dice[0].setValue(0);
-      Dice[1].setValue(0);
       this.targetDiceValue = 0;
-    }
-    
-    else
-    {
-      popupWindow("You haven't hit your target value yet! Roll again!");
-    }
+    } 
   }
   /**
    * This function serves to check if currentDiceSum and targetDiceValue are 
@@ -145,39 +118,9 @@ public class Craps extends Game
     this.currentDiceSum = dieSum;
   }
   
-  /**
-   * This function will create a popup window with the text of input in the
-   * window
-   * @param input a string to be printed in the popup window
-   */
-  private void popupWindow(String input)
-  {
-    Stage popup = new Stage();
-      
-      popup.initModality(Modality.APPLICATION_MODAL);
-      
-      Label message = new Label(input);
-     
-      Button close = new Button("Close");
-      close.setOnAction(e->popup.close());
-      
-      VBox layout= new VBox(10);
-     
-      
-      layout.getChildren().addAll(message, close);
-      
-      layout.setAlignment(Pos.CENTER);
-      
-      Scene scene1= new Scene(layout, 300, 250);
-      
-      popup.setScene(scene1);
-      
-      popup.showAndWait();
-  }
-  
   //Variables for use in class
-  public Die[] Dice = new Die[2];
-  public CrapsPlayer gamePlayer = new CrapsPlayer();
-  public int targetDiceValue;
-  private int currentDiceSum;
+  Die[] Dice = new Die[2];
+  CrapsPlayer gamePlayer = new CrapsPlayer();
+  int targetDiceValue;
+  int currentDiceSum;
 }
