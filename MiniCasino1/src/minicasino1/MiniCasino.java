@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import minicasino1.User;
-import javafx.event.ActionEvent;
 
 public class MiniCasino extends Application {
 
