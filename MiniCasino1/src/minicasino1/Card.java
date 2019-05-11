@@ -1,10 +1,14 @@
-
 package minicasino1;
+
 /**
  * 
  * @author Bradley Cain
  */
 public class Card {
+
+  private suit cardSuit;
+  private faceValue card;
+
   /**
    * creates an enumerated data type to portray 13 different cards with their
    * card value and face value.
@@ -22,6 +26,8 @@ public class Card {
       this.cardValue = cardValue;
       this.faceValue = faceValue;
     }
+
+
     /**
      * gets the card value of the card
      * @return 
@@ -29,6 +35,8 @@ public class Card {
     public int getCardValue() {
       return this.cardValue;
     }
+
+
     /**
      * gets the face value of the card
      * @return 
@@ -37,12 +45,16 @@ public class Card {
       return this.faceValue;
     }
   }
+
+
   /**
    * creates an enumerated data type to portray each of the 4 suits.
    */
   public enum suit {
     HEART, DIAMOND, SPADE, CLUB
   }
+
+
   /**
    * initializes card
    * @param card
@@ -52,6 +64,8 @@ public class Card {
     this.card = card;
     this.cardSuit = cardSuit;
   }
+
+
   /**
    * gets the suit of the card
    * @return 
@@ -59,6 +73,8 @@ public class Card {
   public suit getSuit() {
     return this.cardSuit;
   }
+
+
   /**
    * gets the card value 
    * @return 
@@ -66,6 +82,8 @@ public class Card {
   public int getCardValue() {
     return this.card.getCardValue();
   }
+
+
   /**
    * get the face value of the card
    * @return 
@@ -73,6 +91,8 @@ public class Card {
   public String getFaceValue() {
     return this.card.getFaceValue();
   }
+
+
   /**
    * gets the hexadecimal value of each card for the GUI
    * @return a hexadecimal string
@@ -123,9 +143,8 @@ public class Card {
       default:
         hexa += "1";
     }
+
     int number = Integer.decode(hexa);
     return "\uD83C" + (char) number;
   }
-  private suit cardSuit;
-  private faceValue card;
 }

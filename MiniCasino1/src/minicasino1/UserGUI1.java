@@ -33,7 +33,6 @@ public class UserGUI1 implements Initializable {
   @FXML
   public Label currency = new Label();
 
-  
   @FXML
   private void mainMenuSwitch(ActionEvent event) throws IOException //this to switch
   {
@@ -49,7 +48,7 @@ public class UserGUI1 implements Initializable {
     stage.show();
     stage.setMaximized(true);
   }
-  
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     username.setText(User.getUser().getName());

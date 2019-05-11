@@ -13,6 +13,6 @@ public class BlackjackPlayer extends Player {
 
   @Override
   public void placeBet(int amountOfBet) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 }

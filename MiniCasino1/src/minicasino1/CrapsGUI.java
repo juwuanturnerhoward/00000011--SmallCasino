@@ -29,6 +29,9 @@ import javafx.stage.Stage;
  */
 public class CrapsGUI {
 
+  static int rollCheck;
+  static Craps craps = new Craps();
+
   public static Scene createScene() {
     BorderPane root = new BorderPane();
 
@@ -369,7 +372,4 @@ public class CrapsGUI {
       }
     }
   }
-
-  static int rollCheck;
-  static Craps craps = new Craps();
 }

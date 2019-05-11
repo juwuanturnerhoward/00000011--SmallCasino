@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package minicasino1;
 
 import java.io.IOException;
@@ -78,8 +73,10 @@ public class BlackJackGUI implements Initializable {
   private Label betAmount;
 
   private static Deck deck = new Deck();
+
   private Hand handTest;
   private Hand dealerHandTest;
+
   private static int handTotal = 0;
   private static int playerInitialValue = 0;
   private static int dealerHandTotal = 0;
@@ -102,7 +99,6 @@ public class BlackJackGUI implements Initializable {
       dealerHandTotal += hitCard.getCardValue();
       String cardImg = hitCard.getHexaImage();
       switch (posCounter) {
-        // case 1: dealerFirstCard.setText(unicodeCardImage); break;
         case 1:
           dealerSecondCard.setText(cardImg);
           break;
@@ -117,7 +113,6 @@ public class BlackJackGUI implements Initializable {
           break;
       }
       dealerValue.setText(Integer.toString(dealerHandTotal));
-      //dealerHandTest.(dealerHandTest, dealerHandTotal);
       posCounter++;
     }
 
@@ -148,6 +143,8 @@ public class BlackJackGUI implements Initializable {
       bankAccount.setText("Bank Account: " + (Integer.toString(Account)));
     }
   }
+
+
   /**
    * implements the hit function for the user to play his hand.
    * Displays the cards to the screen so the user can see his hand.
@@ -163,7 +160,7 @@ public class BlackJackGUI implements Initializable {
     Card hitCard = handTest.hit();
     handTotal = handTest.updateHandTotal(hitCard, handTotal);
     String unicodeCardImage = null;
-    //handTotal += hitCard.getCardValue();
+
     String cardImg = hitCard.getHexaImage();
     switch (posCounter) {
       case 1:
@@ -185,6 +182,8 @@ public class BlackJackGUI implements Initializable {
     }
     handValue.setText(Integer.toString(handTotal));
   }
+
+
   /**
    * Changes the scene from Blackjack to Main menu
    * @param event
@@ -201,6 +200,8 @@ public class BlackJackGUI implements Initializable {
     stage.show();
     stage.setMaximized(true);
   }
+
+
   /**
    * Starts the game and initializes the user's and dealer's hand.
    * Every time the user clicks deal it resets each hand and the deck.
@@ -271,6 +272,8 @@ public class BlackJackGUI implements Initializable {
     dealerValue.setText(Integer.toString(dealerInitialValue));
     handValue.setText(Integer.toString(playerInitialValue));
   }
+
+
   /**
    * button for the user to decide what to bet before the deal.
    * @param event 
@@ -280,6 +283,8 @@ public class BlackJackGUI implements Initializable {
     bet = 100;
     betAmount.setText("Bet Amount = 100");
   }
+
+
   /**
    * button for the user to decide what to bet before the deal.
    * @param event 
@@ -289,6 +294,8 @@ public class BlackJackGUI implements Initializable {
     bet = 50;
     betAmount.setText("Bet Amount = 50");
   }
+
+
   /**
    * button for the user to decide what to bet before the deal.
    * @param event 
@@ -299,6 +306,8 @@ public class BlackJackGUI implements Initializable {
     betAmount.setText("Bet Amount = 25");
   }
   //End of BlackJack
+
+
   /**
    * initializes GUI objects in blackjack GUI
    * @param location

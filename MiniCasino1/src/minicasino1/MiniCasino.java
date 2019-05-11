@@ -8,12 +8,10 @@ import javafx.stage.Stage;
 import minicasino1.User;
 import javafx.event.ActionEvent;
 
-public class MiniCasino extends Application 
-{
-    
+public class MiniCasino extends Application {
+
   @Override
-  public void start(Stage stage) throws Exception 
-  {
+  public void start(Stage stage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
     Scene scene = new Scene(root);
     stage.setScene(scene);
@@ -22,10 +20,9 @@ public class MiniCasino extends Application
   }
 
   /**
-  * @param args the command line arguments
-  */
-  public static void main(String[] args) 
-  {
+   * @param args the command line arguments
+   */
+  public static void main(String[] args) {
     user = User.getUser("Johnny");
     launch(args);
   }
